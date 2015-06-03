@@ -24,28 +24,19 @@ var SortContainer = React.createClass({
 			var orginPosition = self.orginPosition;
 			var movePosition = self.state.movePosition;
 			for (var i = 0; i < movePosition.length; i++) {
-				console.log("值为："+movePosition[i].item,"，原位置："+movePosition[i].from,"，目标位置："+movePosition[i].to);
-				if(movePosition[i].from < movePosition[i].to){
-					//说明向右边运动
-					for (var j = 0; j < items.length; j++) {
+				//console.log("值为："+movePosition[i].item,"，原位置："+movePosition[i].from,"，目标位置："+movePosition[i].to);
+				for (var j = 0; j < items.length; j++) {
+					if(movePosition[i].from < movePosition[i].to){
+						//向右边运动
 						if(items[j].dataset.value == movePosition[i].item){
 							items[j].style.top = orginPosition[movePosition[i].to].top-orginPosition[movePosition[i].from].top+"px";
-							items[j].style.left = orginPosition[movePosition[i].to].left-orginPosition[movePosition[i].from].left+"px"
-							
-							items[j].addEventListener("transitionend", function(e){
-								e.target.style.transition="";
-							}, false);
+							items[j].style.left = orginPosition[movePosition[i].to].left-orginPosition[movePosition[i].from].left+"px";
 						}
-					}
-				}else{
-					//说明向左运动
-					for (var j = 0; j < items.length; j++) {
+					}else{
+						//向左运动
 						if(items[j].dataset.value == movePosition[i].item){
 							items[j].style.top = orginPosition[movePosition[i].to].top-orginPosition[movePosition[i].from].top+"px";
-							items[j].style.left = orginPosition[movePosition[i].to].left-orginPosition[movePosition[i].from].left+"px"
-							items[j].addEventListener("transitionend", function(e){
-								e.target.style.transition="";
-							}, false);
+							items[j].style.left = orginPosition[movePosition[i].to].left-orginPosition[movePosition[i].from].left+"px";
 						}
 					}
 				}
